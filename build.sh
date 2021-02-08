@@ -1,5 +1,3 @@
-version=1.0v
-
 if [ "$1" == "build" ]; then
   go build src/Calculator.go
 

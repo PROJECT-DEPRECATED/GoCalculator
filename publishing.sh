@@ -7,7 +7,7 @@ rm -rf publishing/
 go build src/Calculator.go
 
 mkdir build/
-mv Calculator-$version build/
+mv Calculator build/
 
 mv Calculator Calculator-$version
 cp Calculator-$version Calculator-$version.exe

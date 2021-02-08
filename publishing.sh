@@ -2,14 +2,18 @@
 version=1.0v
 
 rm -rf build/
+rm -rf publishing/
 
 go build src/Calculator.go
-mkdir build/publishing/
-
-mv Calculator build/publishing/
 
 mv Calculator Calculator-$version
 cp Calculator Calculator-$version.exe
 
-cp RunScript/Calculator.sh build/publishing
-zip Calculator-1.0v.zip build/publishing
+mkdir build/
+mv Calculator-$version build/
+
+cp RunScript/Calculator.sh build/
+zip Calculator-1.0v.zip build/
+
+mkdir publishing/
+mv Calculator-$version.zip publishing/

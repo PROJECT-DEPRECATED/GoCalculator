@@ -4,9 +4,9 @@ version=1.0v
 rm -rf build/
 
 go build src/Calculator.go
-mkdir build/publishing
+mkdir build/publishing/
 
-mv Calculator build/publishing
+mv Calculator build/publishing/
 
 mv Calculator Calculator-$version
 cp Calculator Calculator-$version.exe

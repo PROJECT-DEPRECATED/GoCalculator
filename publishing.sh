@@ -6,14 +6,14 @@ rm -rf publishing/
 
 go build src/Calculator.go
 
-mv Calculator Calculator-$version
-cp Calculator-$version Calculator-$version.exe
-
 mkdir build/
 mv Calculator-$version build/
+
+mv Calculator Calculator-$version
+cp Calculator-$version Calculator-$version.exe
 
 cp RunScript/Calculator.sh build/
 zip Calculator-1.0v.zip build/
 
-mkdir publishing/
+mkdir publishing
 mv Calculator-$version.zip publishing/

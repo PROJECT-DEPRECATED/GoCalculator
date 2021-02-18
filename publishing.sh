@@ -1,5 +1,5 @@
 # Build Server Only
-version=1.0v
+version=2.0v
 
 rm -rf build/
 rm -rf publish/

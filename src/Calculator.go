@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"calculating"
+	"fmt"
+	"time"
+)
 
 var memory int
 
@@ -16,50 +20,56 @@ func main() {
 
 		switch calculatingType {
 		case "add":
-			fmt.Println("Result:", Add(number1, number2))
+			fmt.Println("Result:", calculating.Add(number1, number2, memory))
 
 		case "subtract":
-			fmt.Println("Result:", Subtract(number1, number2))
+			fmt.Println("Result:", calculating.Subtract(number1, number2, memory))
 
 		case "multiply":
-			fmt.Println("Result:", Multiply(number1, number2))
+			fmt.Println("Result:", calculating.Multiply(number1, number2, memory))
 
 		case "divide":
-			fmt.Println("Result:", Divide(number1, number2))
+			fmt.Println("Result:", calculating.Divide(number1, number2, memory))
 
 		case "remainder":
-			fmt.Println("Result:", DivideRemainder(number1, number2))
+			fmt.Println("Result:", calculating.DivideRemainder(number1, number2, memory))
 
 		case "bit_left":
-			fmt.Println("Result:", LeftBitMove(number1, number2))
+			fmt.Println("Result:", calculating.LeftBitMove(number1, number2, memory))
 
 		case "bit_right":
-			fmt.Println("Result:", RightBitMove(number1, number2))
+			fmt.Println("Result:", calculating.RightBitMove(number1, number2, memory))
 
 		case "m_add":
-			fmt.Println("Result:", MAdd(number1))
+			fmt.Println("Result:", calculating.MAdd(number1, memory))
 
 		case "m_subtract":
-			fmt.Println("Result:", MSubtract(number1))
+			fmt.Println("Result:", calculating.MSubtract(number1, memory))
 
 		case "m_multiply":
-			fmt.Println("Result:", MMultiply(number1))
+			fmt.Println("Result:", calculating.MMultiply(number1, memory))
 
 		case "m_divide":
-			fmt.Println("Result:", MDivide(number1))
+			fmt.Println("Result:", calculating.MDivide(number1, memory))
 
 		case "m_remainder":
-			fmt.Println("Result:", MDivideRemainder(number1))
+			fmt.Println("Result:", calculating.MDivideRemainder(number1, memory))
 
 		case "m_bit_left":
-			fmt.Println("Result:", MLeftBitMove(number1))
+			fmt.Println("Result:", calculating.MLeftBitMove(number1, memory))
 
 		case "m_bit_right":
-			fmt.Println("Result:", MRightBitMove(number1))
+			fmt.Println("Result:", calculating.MRightBitMove(number1, memory))
+
+		case "reset_memory":
+			fmt.Println("Debug memory value:", memory)
+			time.Sleep(1000)
+			fmt.Println("Memory initializing...")
+			InitializingMemory()
 
 		case "help":
 			fmt.Println("Available Default Command = [ add, subtract, multiply, divide, remainder, bit_left, bit_right ]")
-			fmt.Println("Available Memory Command = [ m_add, m_subtract, m_multiply, m_divide, m_remainder, m_bit_left, m_bit_right ]")
+			fmt.Println("Available Memory Command = [ reset_memory, m_add, m_subtract, m_multiply, m_divide, m_remainder, m_bit_left, m_bit_right ]")
 			fmt.Println("Available Util Command = [ help, exit ]")
 
 		case "exit":
@@ -69,151 +79,6 @@ func main() {
 			fmt.Println("Calculator> Error. if you want to command list, you have type \"help\" command.")
 		}
 	}
-}
-
-func MAdd(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	memory = memory + number
-
-	return memory + number
-}
-
-func MSubtract(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	memory = memory - number
-
-	return memory - number
-}
-
-func MMultiply(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	memory = memory * number
-
-	return memory * number
-}
-
-func MDivide(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	memory = memory / number
-
-	return memory / number
-}
-
-func MDivideRemainder(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	return memory % number
-}
-
-func MLeftBitMove(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	memory = memory << number
-
-	return memory << number
-}
-
-func MRightBitMove(number int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number)
-
-	memory = memory >> number
-
-	return memory >> number
-}
-
-func Add(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 + number2
-
-	return number1 + number2
-}
-
-func Subtract(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 - number2
-
-	return number1 - number2
-}
-
-func Multiply(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 * number2
-
-	return number1 * number2
-}
-
-func Divide(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 / number2
-
-	return number1 / number2
-}
-
-func DivideRemainder(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 % number2
-
-	return number1 % number2
-}
-
-func LeftBitMove(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 << number2
-
-	return number1 << number2
-}
-
-func RightBitMove(number1 int, number2 int) int {
-	fmt.Println("Calculator> Please type first number.")
-	fmt.Scan(&number1)
-
-	fmt.Println("Calculator> Please type second number.")
-	fmt.Scan(&number2)
-
-	memory = number1 >> number2
-
-	return number1 >> number2
 }
 
 func InitializingMemory() {
